@@ -1,6 +1,7 @@
 import os
 from google import genai
 from PIL import Image
+from app.ai.context_generator import generate_context_package
 
 
 API_KEY = os.getenv("GEMINI_API_KEY")
@@ -62,8 +63,17 @@ print(amplified_output)
 if (amplified_output == "ERROR-101"):
     print("ERROR RECORDED")
 else:
+    print("Hello World")
     # print("Image Generation has started")
     #my_image = generate_image(amplified_output)
 
     #if my_image:
     #    my_image.show()
+
+topic = "climate change"
+result = generate_context_package(topic)
+
+print("\n--- Generated Explanation ---")
+print(result["explanation"])
+print("\n--- Recommended Actions ---")
+print(result["actions"])
