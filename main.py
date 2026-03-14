@@ -14,8 +14,9 @@ def amplify_input(prompt):
     try:
         response = client.models.generate_content(
             model="gemini-3-flash-preview",
-            contents="Generate with me ONE, ONLY ONE image prompt that turns the following input into " \
-            "something very funny MEME prompt where it be used for image generation: "+prompt
+            contents="Generate for me ONE, ONLY ONE image prompt that turns the following input into " \
+            "something very funny MEME prompt where it be used for image generation. However, "
+            "if the prompt is inappropriate, just output the new prompt as ERROR-101. Prompt: "+prompt
         )
         return response.text
     except Exception as e:
@@ -56,8 +57,13 @@ def generate_image(prompt):
 
 amplified_output = amplify_input(prompt)
 print(amplified_output)
-print("Image generation starting")
-my_image = generate_image(amplified_output)
 
-if my_image:
-    my_image.show()
+# Inappropriate prompts are rejected
+if (amplified_output == "ERROR-101"):
+    print("ERROR RECORDED")
+else:
+    # print("Image Generation has started")
+    #my_image = generate_image(amplified_output)
+
+    #if my_image:
+    #    my_image.show()
