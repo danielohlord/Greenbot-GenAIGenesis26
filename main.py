@@ -10,28 +10,51 @@ client = genai.Client(api_key=API_KEY)
 prompt = input("Input your sustainability thing: ")
 
 def amplify_input(prompt):  
-    response = client.models.generate_content(
-        model="gemini-3-flash-preview",
-        contents=prompt
-    )
-    return response.text
+    try:
+        response = client.models.generate_content(
+            model="gemini-3-flash-preview",
+            contents="Generate with me ONE, ONLY ONE image prompt that turns the following input into something very funny prompt where it be used for image generation: "+prompt
+        )
+        return response.text
+    except Exception as e:
+        print("Text Generation has failed")
+        return prompt
 
 def generate_image(prompt):
-    response = client.models.generate_content(
-        model="gemini-3.1-flash-image-preview",
-        contents=prompt
-    )
-    
-    for part in response.parts:
-        img = part.as_image()
+    try:
+        response = client.models.generate_content(
+            model="gemini-3.1-flash-image-preview",
+            contents=["Generate this image:" +prompt]
+        )
+        
+        # Image retrieval
+        # Gemini doesn't send all of it at once, but instead in parts.
+        # 1. Look at everything gemini sends back
+        for part in response.parts:
 
-        img.save("sustainability", format="PNG")
+            # If there is no data (filter, etc), then 
+            if part.text is not None:
+                print(part.text)
 
-        return img
+            # Gemini sends raw binary bytes. It checks te inline_data
+            elif part.inline_data is not None:
 
+                # Takes the raw numbers and wraps it into an image
+                image = part.as_image()
+
+                # 
+                image.save("generated_image.png")
+
+    except Exception as e:
+        if "RESOURCE_EXHAUSTED" in str(e):
+            print("You've hit your quota")
+        else:
+            print("Image generation has failed")
+    return None
 
 amplified_output = amplify_input(prompt)
-my_image = generate_image(prompt)
+print("Image generation starting")
+my_image = generate_image(amplified_output)
 
 if my_image:
     my_image.show()
