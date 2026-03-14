@@ -1,11 +1,14 @@
 import os
 from google import genai
+from action_generator import generate_actions
+
 
 # Initialize the client
 # Ensure GEMINI_API_KEY is set in your environment variables
 client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
 
 def generate_explanation(topic: str) -> str:
+
     """
     Generates a short educational explanation about a sustainability topic.
     """
@@ -31,10 +34,23 @@ def generate_explanation(topic: str) -> str:
 
     except Exception as e:
         return f"An unexpected error occurred: {str(e)}"
-    
-if __name__ == "__main__":
-    topic = "plastic pollution"
-    result = generate_explanation(topic)
 
-    print("\nGenerated Explanation:\n")
-    print(result)
+def generate_context_package(topic):
+    
+    explanation = generate_explanation(topic)
+    actions = generate_actions(topic)
+
+    return {
+        "explanation": explanation,
+        "actions": actions
+    }
+
+
+if __name__ == "__main__":
+    topic = "climate change"
+    result = generate_context_package(topic)
+
+    print("\n--- Generated Explanation ---")
+    print(result["explanation"])
+    print("\n--- Recommended Actions ---")
+    print(result["actions"])
