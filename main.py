@@ -10,10 +10,12 @@ client = genai.Client(api_key=API_KEY)
 prompt = input("Input your sustainability thing: ")
 
 def amplify_input(prompt):  
+    
     try:
         response = client.models.generate_content(
             model="gemini-3-flash-preview",
-            contents="Generate with me ONE, ONLY ONE image prompt that turns the following input into something very funny prompt where it be used for image generation: "+prompt
+            contents="Generate with me ONE, ONLY ONE image prompt that turns the following input into " \
+            "something very funny MEME prompt where it be used for image generation: "+prompt
         )
         return response.text
     except Exception as e:
@@ -42,7 +44,7 @@ def generate_image(prompt):
                 # Takes the raw numbers and wraps it into an image
                 image = part.as_image()
 
-                # 
+                # Actually save the image to the project folder
                 image.save("generated_image.png")
 
     except Exception as e:
@@ -53,6 +55,7 @@ def generate_image(prompt):
     return None
 
 amplified_output = amplify_input(prompt)
+print(amplified_output)
 print("Image generation starting")
 my_image = generate_image(amplified_output)
 
