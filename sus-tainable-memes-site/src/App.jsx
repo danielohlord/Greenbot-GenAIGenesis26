@@ -4,7 +4,6 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 import Header from "./components/Header"
-import Navbar from "./components/Navbar"
 import TextInput from './components/TextInput'
 
 function App() {
@@ -12,10 +11,9 @@ function App() {
 
   return (
     <div>
-      <Navbar />
       <Header />
+      <p>Imagine a sustainable meme...</p>
       <TextInput />
-      <p>This is my react website.</p>
     </div>
   )
 }

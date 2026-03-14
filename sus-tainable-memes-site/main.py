@@ -1,7 +1,7 @@
 import os
 from google import genai
 from PIL import Image
-from app.ai.context_generator import generate_context_package
+from app.context_generator import generate_context_package
 
 
 API_KEY = os.getenv("GEMINI_API_KEY")

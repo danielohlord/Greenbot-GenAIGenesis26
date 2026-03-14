@@ -7,6 +7,9 @@ form {
 input {
   flex: 1;
   padding: 20px;
+  margin: 20px;
+  margin-right:0px;
+  margin-left:70px;
   font-size: 16px;
   border: 2px solid #ccc;
   border-radius: 50px;
@@ -14,14 +17,17 @@ input {
 }
 
 input:focus {
-  border-color: #007bff;
+  border-color: #5900ff;
 }
 
 button {
-  padding: 10px 20px;
+  padding: 20px 20px;
+  margin-left: 10 px;
+  margin: 20px;
+  margin-right:70px;
   font-size: 16px;
   border: none;
-  background-color: #007bff;
+  background-color: #2b2754;
   color: white;
   border-radius: 50px;
   cursor: pointer;
@@ -29,4 +35,20 @@ button {
 
 button:hover {
   background-color: #0056b3;
+}
+
+.image-display {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center; /* center the image */
+}
+
+.image-display img {
+  max-width: 300px;   /* max width */
+  max-height: 300px;  /* max height */
+  width: auto;
+  height: auto;       /* maintain aspect ratio */
+  border-radius: 15px; /* rounded corners */
+  object-fit: contain; /* scale image while keeping aspect ratio */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* optional: subtle shadow */
 }
