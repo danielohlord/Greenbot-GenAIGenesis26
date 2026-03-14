@@ -1,11 +1,11 @@
 import os
 from google import genai
-from app.ai.action_generator import generate_actions
+from pyscript.action_generator import generate_actions
 
 
 # Initialize the client
 # Ensure GEMINI_API_KEY is set in your environment variables
-client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY")) #WHY SI THIS NOT WORKING FYM 2 ARGUMENTS
 
 def generate_explanation(topic: str) -> str:
 

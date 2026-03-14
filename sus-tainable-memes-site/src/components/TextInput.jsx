@@ -5,6 +5,8 @@ function TextInput(){
     // Update text variable with setText and useState
     const [text, setText] = useState("")
     const [image, setImage] = useState(null) // store submitted image
+    const [context, setResult1] = useState("");
+    const [actions, setResult2] = useState("");
     const [loading, setLoading] = useState(false) // Get the image loading state
 
 
@@ -12,15 +14,22 @@ function TextInput(){
         e.preventDefault() // Dont refresh page
         console.log(text) // Debug thingy to check proper input
         setText("")
+
         setLoading(true) // show loading message to user
 
         try {
             // Send input to Python
-            await fetch("http://localhost:5000/generate", {
+            const response = await fetch("http://localhost:5000/generate", {
                 method: "POST",
                 headers: {"Content-type": "application/json"},
                 body: JSON.stringify({text}),
             })
+
+            // Get context and action data from response
+            const data = await response.json();
+            console.log(data);
+
+            // 
 
             // Keep checking if the image we need exists
             const checkImage = async() => {

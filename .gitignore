@@ -1,4 +1,5 @@
-.venv/
+*.venv
+*.env
 generated_image.png
 
 # Editor directories and files (Stuff that is a byproduct of IDE or OS and is generally junk)

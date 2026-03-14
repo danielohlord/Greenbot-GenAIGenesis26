@@ -2,7 +2,7 @@ import os
 from google import genai
 
 # Initialize client
-client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 def generate_actions(topic: str) -> str:
     """

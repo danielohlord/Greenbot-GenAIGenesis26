@@ -1,14 +1,19 @@
 import os
 from google import genai
 from PIL import Image
-from app.context_generator import generate_context_package
 
+from pathlib import Path
+from dotenv import load_dotenv
+
+env_path = Path(__file__).resolve().parent.parent / ".env"  # adjust path if needed
+load_dotenv(dotenv_path=env_path)
 
 API_KEY = os.getenv("GEMINI_API_KEY")
 
-client = genai.Client(api_key=API_KEY)
+from pyscript.context_generator import generate_context_package
 
-prompt = input("Input your sustainability thing: ")
+
+client = genai.Client(api_key=API_KEY)
 
 def amplify_input(prompt):  
     
@@ -56,24 +61,26 @@ def generate_image(prompt):
             print("Image generation has failed")
     return None
 
-amplified_output = amplify_input(prompt)
-print(amplified_output)
+if(__name__ == "__main__"):
+    prompt = input("Input your sustainability thing: ")
+    amplified_output = amplify_input(prompt)
+    print(amplified_output)
 
-# Inappropriate prompts are rejected
-if (amplified_output == "ERROR-101"):
-    print("ERROR RECORDED")
-else:
-    print("Hello World")
-    # print("Image Generation has started")
-    #my_image = generate_image(amplified_output)
+    # Inappropriate prompts are rejected
+    if (amplified_output == "ERROR-101"):
+        print("ERROR RECORDED")
+    else:
+        print("Hello World")
+        # print("Image Generation has started")
+        #my_image = generate_image(amplified_output)
 
-    #if my_image:
-    #    my_image.show()
+        #if my_image:
+        #    my_image.show()
 
-topic = "climate change"
-result = generate_context_package(topic)
+    topic = "climate change"
+    result = generate_context_package(topic)
 
-print("\n--- Generated Explanation ---")
-print(result["explanation"])
-print("\n--- Recommended Actions ---")
-print(result["actions"])
+    print("\n--- Generated Explanation ---")
+    print(result["explanation"])
+    print("\n--- Recommended Actions ---")
+    print(result["actions"])

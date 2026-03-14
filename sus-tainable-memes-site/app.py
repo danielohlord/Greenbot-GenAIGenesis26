@@ -1,8 +1,7 @@
 from flask import Flask, request, send_file, jsonify
 from flask_cors import CORS
-import time
 import os
-# import main
+import main
 
 app = Flask(__name__)
 CORS(app) # Allow react frontend to call app
@@ -15,23 +14,36 @@ def generate():
     text_input = data.get("text", "")
     print("Received:", text_input)
 
-    # Placeholder: simulate Gemini API call
-    print("Generating image...")
-    # You would put your actual Gemini API logic here:
-    # gemini_response = call_gemini_api(text_input)
-    # save image to STATIC_DIR/generated_image.png
 
-    # Simulate processing delay
-    time.sleep(5)
+    # Start getting images and stuff
+    amplified_output = main.amplify_input(text_input)
+    print(amplified_output)
 
-    # For testing, copy or save some test image
-    placeholder_image_path = os.path.join("./src/assets/placeholder.png")
-    output_image_path = os.path.join(IMG_FILE)
-    if os.path.exists(placeholder_image_path):
-        with open(placeholder_image_path, "rb") as src, open(output_image_path, "wb") as dst:
-            dst.write(src.read())
+    # Inappropriate prompts are rejected
+    if (amplified_output == "ERROR-101"):
+        print("ERROR RECORDED")
+        result = "Your question was flagged as inappropriate"
 
-    return jsonify({"status": "done"})
+        # Replace previous image with a placeholder since it's not appropriate 
+        placeholder_image_path = os.path.join("./src/assets/placeholder.png")
+        output_image_path = os.path.join(IMG_FILE)
+        if os.path.exists(placeholder_image_path):
+            with open(placeholder_image_path, "rb") as src, open(output_image_path, "wb") as dst:
+                dst.write(src.read())
+    else:
+        print("Hello World")
+        # Send the amplified output to generate a bunch of extra context info
+        result = main.generate_context_package(text_input)
+
+        # Generate an image
+        # print("Image Generation has started")
+        #my_image = generate_image(amplified_output)
+
+        #if my_image:
+        #    my_image.show()
+
+    return jsonify({"context": result["explanation"],
+                    "actions": result["actions"]})
 
 @app.route("/generated_image.png")
 def serve_image():
