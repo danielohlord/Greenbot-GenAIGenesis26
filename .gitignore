@@ -1,2 +1,13 @@
 .venv/
 generated_image.png
+
+# Editor directories and files (Stuff that is a byproduct of IDE or OS and is generally junk)
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
