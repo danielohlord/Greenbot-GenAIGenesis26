@@ -7,6 +7,7 @@ A website that generates AI memes to educate the masses on sustainability and su
 ## Table of Contents
 
 - [Installation](#installation)
+- [API Setup](#api-setup)
 - [Hosting](#hosting-locally)
 
 ---
@@ -29,6 +30,8 @@ npm install
 cd ../sus-tainable-memes-site-backend
 pip install -r requirements.txt
 ```
+
+## API Setup
 
 ## Hosting Locally
 
