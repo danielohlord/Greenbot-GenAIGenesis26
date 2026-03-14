@@ -18,7 +18,20 @@ def amplify_input(prompt):
 
 def generate_image(prompt):
     response = client.models.generate_content(
-        model="gemini-3.1-flash-image-preview"
+        model="gemini-3.1-flash-image-preview",
         contents=prompt
     )
-print(amplify_input(prompt))
+    
+    for part in response.parts:
+        img = part.as_image()
+
+        img.save("sustainability", format="PNG")
+
+        return img
+
+
+amplified_output = amplify_input(prompt)
+my_image = generate_image(prompt)
+
+if my_image:
+    my_image.show()
