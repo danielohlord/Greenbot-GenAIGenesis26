@@ -70,12 +70,11 @@ if(__name__ == "__main__"):
     if (amplified_output == "ERROR-101"):
         print("ERROR RECORDED")
     else:
-        print("Hello World")
-        # print("Image Generation has started")
-        #my_image = generate_image(amplified_output)
+        print("Image Generation has started")
+        my_image = generate_image(amplified_output)
 
-        #if my_image:
-        #    my_image.show()
+        if my_image:
+            my_image.show()
 
     topic = "climate change"
     result = generate_context_package(topic)
