@@ -71,3 +71,5 @@ Start React Development Server And Run Python
 npm run dev
 python app.py
 ```
+
+The website should be at ```http://localhost:5173```, if it is different then you should see the local link after runnning ```npm run dev```
