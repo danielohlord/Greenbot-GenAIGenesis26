@@ -1,12 +1,13 @@
-import { useState } from "react"
+import React, { useState } from "react"
+import ReactMarkdown from "react-markdown"
 import "./TextInput.css"
 
 function TextInput(){
     // Update text variable with setText and useState
     const [text, setText] = useState("")
     const [image, setImage] = useState(null) // store submitted image
-    const [context, setResult1] = useState("");
-    const [actions, setResult2] = useState("");
+    const [context, setContext] = useState(""); // Get context and actions
+    const [actions, setActions] = useState("");
     const [loading, setLoading] = useState(false) // Get the image loading state
 
 
@@ -29,7 +30,9 @@ function TextInput(){
             const data = await response.json();
             console.log(data);
 
-            // 
+            // Set context and actions vars
+            setContext(data.context);
+            setActions(data.actions);
 
             // Keep checking if the image we need exists
             const checkImage = async() => {
@@ -56,7 +59,7 @@ function TextInput(){
     }
 
     return (
-        <div className="text-input-container">
+        <div>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -74,6 +77,12 @@ function TextInput(){
                     <img src={image} alt="Generating" />
                 </div>
             )}
+
+            <div className="markdown-container">
+                <ReactMarkdown>{context}</ReactMarkdown>
+                <ReactMarkdown>{actions}</ReactMarkdown>
+            </div>
+
         </div>
     )
 }

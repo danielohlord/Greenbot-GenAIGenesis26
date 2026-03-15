@@ -28,10 +28,10 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
+    --text: #0f5e19;
+    --text-h: #2b9930;
+    --bg: #f9f5ed;
+    --border: #5d7862;
     --code-bg: #1f2028;
     --accent: #c084fc;
     --accent-bg: rgba(192, 132, 252, 0.15);
@@ -68,7 +68,7 @@ h2 {
 }
 
 h1 {
-  font-size: 56px;
+  font-size: 100px;
   letter-spacing: -1.68px;
   margin: 32px 0;
 }

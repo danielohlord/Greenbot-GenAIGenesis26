@@ -11,13 +11,13 @@ input {
   margin-right:0px;
   margin-left:70px;
   font-size: 16px;
-  border: 2px solid #ccc;
+  border: 5px solid #5a7356;
   border-radius: 50px;
   outline: none;
 }
 
 input:focus {
-  border-color: #5900ff;
+  border-color: #5bae75;
 }
 
 button {
@@ -27,7 +27,7 @@ button {
   margin-right:70px;
   font-size: 16px;
   border: none;
-  background-color: #2b2754;
+  background-color: #124a28;
   color: white;
   border-radius: 50px;
   cursor: pointer;
@@ -51,4 +51,32 @@ button:hover {
   border-radius: 15px; /* rounded corners */
   object-fit: contain; /* scale image while keeping aspect ratio */
   box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* optional: subtle shadow */
+}
+
+
+.markdown-container{
+  text-align: left; /* aligns all text to the left */
+  margin: 20px auto; /* top/bottom 20px, centered horizontally */
+  max-width: 800px; /* optional: limit width for readability */
+  padding: 10px; 
+}
+.markdown-container a { /*Change link colours*/
+  color:#0f853e;
+}
+
+.markdown-container p { /*Change line spacings*/
+  margin-bottom: 1em;
+}
+
+.markdown-container h1,
+.markdown-container h2,
+.markdown-container h3 {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+.markdown-container ul,
+.markdown-container ol {
+  margin-left: 20px;
+  margin-bottom: 1em;
 }

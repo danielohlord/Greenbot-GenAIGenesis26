@@ -14,14 +14,14 @@ def generate_actions(topic: str) -> str:
     Keep each action short.
 
     Include the following in Markdown format:
-    ### Recommended Actions for {topic}
+    ### Recommended Actions for [topic]
     1. [Action 1]
     2. [Action 2]
     3. [Action 3]
 
-    **Why it matters:** [Brief explanation of the impact]
+    [Brief explanation of the impact]
     
-    **Source:** [Organization Name](URL)
+    **Source:** [Proper citation with Markdown link to url of information]
     """
 
     try:

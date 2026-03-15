@@ -13,12 +13,12 @@ def generate_explanation(topic: str) -> str:
     Generates a short educational explanation about a sustainability topic.
     """
     prompt = f"""
-    Explain the sustainability issue behind '{topic}' in 2-3 simple sentences.
+    Explain the sustainability issue behind '{topic}' in 2-3 simple sentences and explain both upsides and downsides.
 
     Include the following in Markdown format:
-    - A clear explanation
-    - Why it matters
-    - One credible source (URL or name)
+    - [A clear explanation]
+    - [Why it matters]
+    - [A credible source with a Markdown link to url of information]
     """
 
     try:

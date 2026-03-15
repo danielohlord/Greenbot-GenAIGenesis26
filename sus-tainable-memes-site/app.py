@@ -18,11 +18,11 @@ def generate():
     # Start getting images and stuff
     amplified_output = main.amplify_input(text_input)
     print(amplified_output)
-
+    result = {"explanation": "Your question was flagged as inappropriate",
+              "actions": "Please try a different prompt!"}
     # Inappropriate prompts are rejected
     if (amplified_output == "ERROR-101"):
         print("ERROR RECORDED")
-        result = "Your question was flagged as inappropriate"
 
         # Replace previous image with a placeholder since it's not appropriate 
         placeholder_image_path = os.path.join("./src/assets/placeholder.png")
@@ -32,15 +32,15 @@ def generate():
                 dst.write(src.read())
     else:
         print("Hello World")
-        # Send the amplified output to generate a bunch of extra context info
+        # Send the prompt to generate a bunch of extra context info
         result = main.generate_context_package(text_input)
 
         # Generate an image
-        # print("Image Generation has started")
-        #my_image = generate_image(amplified_output)
+        print("Image Generation has started")
+        my_image = main.generate_image(amplified_output)
 
-        #if my_image:
-        #    my_image.show()
+        if my_image:
+           my_image.show()
 
     return jsonify({"context": result["explanation"],
                     "actions": result["actions"]})

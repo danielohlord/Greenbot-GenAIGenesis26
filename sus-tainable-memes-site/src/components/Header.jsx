@@ -1,7 +1,7 @@
 function Header() {
   return (
     <header>
-      <h1>Sus-tainable Memes</h1>
+      <h1>GreenBot</h1>
     </header>
   )
 }
