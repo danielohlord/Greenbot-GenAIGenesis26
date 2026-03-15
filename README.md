@@ -65,11 +65,11 @@ Follow the installation instructions in console, and when prompted, pick Vite.
 
 ## Hosting Locally
 
-Start React Development Server And Run Python
+You will need to run the following commands in two separate bash terminals, both from ```local_repo/sus-tainable-memes-site```.
 
 ```bash
-npm run dev
 python app.py
+npm run dev
 ```
 
-The website should be at ```http://localhost:5173```, if it is different then you should see the local link after runnning ```npm run dev```
+The website should be at ```http://localhost:5173```, if it is different then you should see the local link after running ```npm run dev```
