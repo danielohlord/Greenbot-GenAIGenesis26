@@ -185,6 +185,11 @@
 
 
 header {
-  margin-top: 50px;
   margin-bottom: 100px;
+}
+
+.site-logo{
+  height: 80px;
+  width: auto;
+  margin-top: 20px;
 }

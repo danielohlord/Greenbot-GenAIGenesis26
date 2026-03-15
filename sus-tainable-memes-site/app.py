@@ -14,7 +14,9 @@ def generate():
     text_input = data.get("text", "")
     print("Received:", text_input)
 
-
+    if(text_input.strip() == ""):
+        return jsonify({"context": "",
+                    "actions": ""})
     # Start getting images and stuff
     amplified_output = main.amplify_input(text_input)
     print(amplified_output)

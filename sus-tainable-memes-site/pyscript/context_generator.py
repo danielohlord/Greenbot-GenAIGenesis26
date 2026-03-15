@@ -15,10 +15,10 @@ def generate_explanation(topic: str) -> str:
     prompt = f"""
     Explain the sustainability issue behind '{topic}' in 2-3 simple sentences and explain both upsides and downsides.
 
-    Include the following in Markdown format:
-    - [A clear explanation]
-    - [Why it matters]
-    - [A credible source with a Markdown link to url of information]
+    Give explanations for each of the following sections formatted in Markdown:
+    - Explanation
+    - Why it matters
+    - **Source:** [Proper citation with Markdown link to url of information]
     """
 
     try:

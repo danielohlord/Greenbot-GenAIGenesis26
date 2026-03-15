@@ -50,7 +50,7 @@ function TextInput(){
             }
 
             await checkImage()
-            setImage("http://localhost:5000/generated_image.png")
+            setImage(`http://localhost:5000/generated_image.png?t=${Date.now()}`)
         }catch (err){
             console.error(err)
         }finally{
