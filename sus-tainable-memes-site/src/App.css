@@ -185,11 +185,15 @@
 
 
 header {
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 .site-logo{
   height: 80px;
   width: auto;
   margin-top: 20px;
+}
+
+p {
+  margin-bottom: 50px;
 }
