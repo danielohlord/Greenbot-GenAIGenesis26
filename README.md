@@ -1,4 +1,4 @@
-# Sus-tainable Memes Site
+# GreenBot AI
 
 A website that generates AI memes to educate the masses on sustainability and sustainable practices.
 
