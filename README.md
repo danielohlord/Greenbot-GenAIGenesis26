@@ -2,6 +2,8 @@
 
 A website that generates AI memes to educate the masses on sustainability and sustainable practices.
 
+![Website Image](https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/438/098/datas/gallery.jpg)
+
 ---
 
 ## Table of Contents
